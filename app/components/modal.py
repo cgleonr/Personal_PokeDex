@@ -181,32 +181,31 @@ def show_pokemon_modal(row):
 
     st.write("---")
 
-
     # --------------------------------------------------------
-    # FULL EVOLUTION CHAIN (HORIZONTAL)
+    # FULL EVOLUTION CHAIN (HORIZONTAL FIXED)
     # --------------------------------------------------------
     st.markdown("### Evolution Chain")
 
     full_chain = build_full_evo_chain(st.session_state["df"], row["id"])
 
-    # Render horizontally using flexbox
     html = """
-    <div style='display:flex; align-items:center; flex-wrap:wrap; gap:20px;'>
+    <div style='display:flex; align-items:center; flex-wrap:wrap; gap:32px;'>
     """
 
     for stage_index, stage in enumerate(full_chain):
 
-        # Group box for that stage
-        html += "<div style='display:flex; flex-direction:row; gap:10px;'>"
+        # Stage group container
+        html += "<div style='display:flex; flex-direction:row; gap:18px;'>"
 
         for pid in stage:
             sprite = f"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{pid}.png"
 
-            # Highlight current Pokémon
+            # Current Pokémon highlighted
             if pid == row["id"]:
                 html += f"""
                 <div style='text-align:center;'>
-                    <img src='{sprite}' width='120' style='border:3px solid #ffcb05; border-radius:10px;'>
+                    <img src='{sprite}' width='120'
+                        style='border:3px solid #ffcb05; border-radius:12px; padding:4px;'>
                     <div style='font-weight:bold; color:#ffcb05;'>#{pid}</div>
                 </div>
                 """
@@ -218,15 +217,16 @@ def show_pokemon_modal(row):
                 </div>
                 """
 
-        html += "</div>"
+        html += "</div>"  # END stage group
 
         # Add arrow unless last stage
         if stage_index < len(full_chain) - 1:
-            html += "<div style='font-size:2rem;'>→</div>"
+            html += "<div style='font-size:2rem; font-weight:bold;'>→</div>"
 
-    html += "</div>"
+    html += "</div>"  # END flex root
 
     st.markdown(html, unsafe_allow_html=True)
+
 
 
 

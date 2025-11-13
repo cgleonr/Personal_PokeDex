@@ -32,6 +32,11 @@ with st.sidebar:
             st.session_state.etl_running = True
             st.session_state.etl_progress = None
             start_etl_background()
+        if st.sidebar.button("⬅ Back to Home"):
+            st.session_state["view"] = "landing"
+            st.session_state["selected_pokemon"] = None
+            st.rerun()
+    
 
     else:
         prog = st.session_state.etl_progress
@@ -53,37 +58,33 @@ with st.sidebar:
 # -------------------------
 
 df = load_pokemon_data()
-
-st.session_state["df"] = df
+st.session_state["df"] = df  # needed for evolution chain builder
 
 # Always show top search bar
-query = st.text_input("Search Pokémon by name or ID", st.session_state.search_query)
+query = st.text_input("Search Pokémon by name or ID", st.session_state.get("search_query", ""))
 
+# Update stored search query
+st.session_state["search_query"] = query
+
+
+# ---------------------------------------------------------
+# DECISION LOGIC (ORDER MATTERS!)
+# ---------------------------------------------------------
+
+# 1. If viewing details — that takes priority over ANY search
 if st.session_state.get("view") == "details":
     from app.components.modal import show_pokemon_modal
-
     show_pokemon_modal(st.session_state["selected_pokemon"])
-    st.markdown("---")
-
-    if st.button("⬅ Back to Pokédex"):
-        st.session_state["view"] = "landing"
-        st.session_state["selected_pokemon"] = None
-
-        # IMPORTANT FIX: Reset random Pokémon for landing page
-        if "landing_random" in st.session_state:
-            del st.session_state["landing_random"]
-
-        st.rerun()
-
     st.stop()
 
 
-# 2. LANDING PAGE (no search query)
-if query.strip() == "":
-    render_landing_page(df)
-
-# 3. SEARCH RESULTS
-else:
+# 2. If search bar is not empty → show search results
+if query.strip() != "":
+    st.session_state["view"] = "search"
     render_search_results(df, query)
+    st.stop()
 
 
+# 3. Otherwise → landing page
+st.session_state["view"] = "landing"
+render_landing_page(df)
