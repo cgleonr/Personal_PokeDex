@@ -1,6 +1,6 @@
 # How to Create a Desktop Shortcut
 
-## Option 1: Standalone Application (Recommended)
+## Option 1: Standalone Application (Under Active Development)
 
 **Best for desktop use - runs in its own window, no browser needed!**
 

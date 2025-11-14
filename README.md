@@ -7,9 +7,9 @@ I hope nintendo doesn't come after me for this one.
 "Personal PokeDex" Aims to emulate the pokedex found in (as far as I can remember) the original Pokemon show. The goal is to be able to look up all the information about all the released pokemon, and display it in a friendly way. This also includes type strengths and weaknesses, information that I myself usually tend to look for when heading into battles underlevelled :thumbsup:.
 
 ## What does it look like?
-
---post a screenshot here--
-
+| Landing Page    | Sample Main Page | Sample Details Page |
+|-----------------|------------------|---------------------|
+| ![landing page](/img/landing_page.png) | ![rayquaza_main](/img/rayquaza_1.png) | ![rayquaza_details](/img/rayquaza_2.png)
 ## How do I get it to work?
 
 ### Prerequisites
@@ -20,14 +20,14 @@ I hope nintendo doesn't come after me for this one.
 ### Installation & Running
 
 1. **Install dependencies:**
+After cloning the repository:
    ```bash
    pip install -r requirements.txt
    ```
 
-2. **Run the application:**
-   
-   **Standalone Application (Recommended):**
-   
+2. **Run the application:**   
+   **Standalone Application (Under Development, use web app for now):**
+   >**_Use the web app for now, desktop app is under active development_**
    **Windows:**
    - Double-click `start_standalone.bat` or `pokedex_standalone.py`
    
@@ -43,6 +43,7 @@ I hope nintendo doesn't come after me for this one.
    - Perfect for desktop use!
    
    **Web Browser Version:**
+   >**_Current working version_**
    
    **Windows:**
    - Double-click `start_pokedex.bat` or `launch_pokedex.py`
