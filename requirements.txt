@@ -36,3 +36,6 @@ typing_extensions==4.15.0
 tzdata==2025.2
 urllib3==2.5.0
 watchdog==6.0.0
+flask==3.0.0
+flask-cors==4.0.0
+pywebview==5.0.0
