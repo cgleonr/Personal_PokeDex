@@ -89,6 +89,9 @@ After cloning the repository:
 - **Navigation**: Use the D-pad buttons to navigate between Pokémon
 - **Classic Design**: Styled to look like the original Pokédex device from the anime
 
+## Note:
+The backend process must be closed manually, othrewise flask server will remain running in the backend. Use `Ctrl + C` in the opened terminal to close the process.
+
 
 
 
