@@ -60,8 +60,6 @@ def build_executable():
         f"--add-data=static{path_sep}static",  # Include static directory
         "--hidden-import=webview",
         "--hidden-import=flask",
-        "--hidden-import=pandas",
-        "--hidden-import=numpy",
         "pokedex_standalone.py"
     ]
     
