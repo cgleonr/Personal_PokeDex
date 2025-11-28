@@ -63,9 +63,17 @@ def build_executable():
     ]
     
     # Add icon if available (optional)
-    icon_path = script_dir / "icon.ico" if sys.platform == 'win32' else script_dir / "icon.icns"
+    # Add icon if available (optional)
+    if sys.platform == 'win32':
+        icon_path = script_dir / "img" / "slimdex_logo_backgroundless.ico"
+    else:
+        icon_path = script_dir / "icon.icns"
+
     if icon_path.exists():
+        print(f"Using icon: {icon_path}")
         cmd.insert(-1, f"--icon={icon_path}")
+    else:
+        print(f"Warning: Icon not found at {icon_path}")
     
     print("Running PyInstaller...")
     print("This may take a few minutes...")
