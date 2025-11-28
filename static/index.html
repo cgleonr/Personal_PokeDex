@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Pokédex</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="pokedex-container">
+        <!-- Pokedex Device -->
+        <div class="pokedex">
+            <!-- Top Section with Screen -->
+            <div class="pokedex-top">
+                <div class="screen-container">
+                    <div class="screen">
+                        <div class="screen-content" id="screenContent">
+                            <!-- Landing Screen -->
+                            <div id="landingView" class="view active">
+                                <div class="welcome-screen">
+                                    <h1>POKÉDEX</h1>
+                                    <p>Search for any Pokémon by name or ID</p>
+                                    <div class="search-container">
+                                        <input type="text" id="searchInput" placeholder="Enter name or ID..." autocomplete="off" tabindex="0" spellcheck="false">
+                                        <button id="searchBtn" class="pokedex-button" type="button">SEARCH</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Search Results View -->
+                            <div id="searchResultsView" class="view">
+                                <div class="results-header">
+                                    <h2>SEARCH RESULTS</h2>
+                                </div>
+                                <div id="searchResults" class="pokemon-grid"></div>
+                            </div>
+
+                            <!-- Pokemon Detail View -->
+                            <div id="detailView" class="view">
+                                <div class="detail-header">
+                                </div>
+                                <div id="pokemonDetail" class="pokemon-detail"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Screen Border Lights -->
+                <div class="screen-lights">
+                    <div class="light red"></div>
+                    <div class="light blue"></div>
+                    <div class="light yellow"></div>
+                </div>
+            </div>
+
+            <!-- Bottom Section with Controls -->
+            <div class="pokedex-bottom">
+                <div class="controls">
+                    <div class="d-pad">
+                        <button class="d-pad-btn up" onclick="navigatePokemon('prev')">↑</button>
+                        <div class="d-pad-middle">
+                            <button class="d-pad-btn left" onclick="navigatePokemon('prev')">←</button>
+                            <button class="d-pad-btn center">○</button>
+                            <button class="d-pad-btn right" onclick="navigatePokemon('next')">→</button>
+                        </div>
+                        <button class="d-pad-btn down" onclick="navigatePokemon('next')">↓</button>
+                    </div>
+                    
+                    <button class="search-btn" onclick="triggerSearch()" title="Search">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    
+                    <div class="action-buttons">
+                        <button class="action-btn a-button" onclick="selectPokemon()">A</button>
+                        <button class="action-btn b-button" onclick="goBack()">B</button>
+                    </div>
+                </div>
+                
+                <div class="hinge"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
