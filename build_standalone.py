@@ -41,7 +41,7 @@ def build_executable():
     # Determine path separator for PyInstaller
     if sys.platform == 'win32':
         path_sep = ';'
-        console_flag = "--noconsole"
+        console_flag = "--console"
         exe_ext = ".exe"
         exe_name = "Pokédex.exe"
     else:
@@ -58,7 +58,6 @@ def build_executable():
         console_flag,
         f"--add-data=data{path_sep}data",  # Include data directory
         f"--add-data=static{path_sep}static",  # Include static directory
-        "--hidden-import=webview",
         "--hidden-import=flask",
         "pokedex_standalone.py"
     ]
